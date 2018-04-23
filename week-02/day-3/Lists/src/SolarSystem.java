@@ -17,10 +17,6 @@ public class SolarSystem{
     }
     public static String putSaturn(ArrayList<String> list) {
         list.add(5, "Saturn");
-        String planets = "";
-        for (int i = 0; i < list.size() - 1; i++)
-            planets += "\"" + list.get(i) + "\", ";
-        planets += "\"" + list.get(list.size() - 1) + "\"";
-        return planets;
+        return String.join(", ", list);
     }
 }

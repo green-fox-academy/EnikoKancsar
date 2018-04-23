@@ -10,13 +10,21 @@ public class Matchmaking{
     }
 
     public static String makingMatches(ArrayList<String> girls, ArrayList<String> boys) {
-        String matches = "";
-        for (int i = 0; i < girls.size() - 1; i++) {
-                matches += "\"" + girls.get(i) + "\", ";
-                matches += "\"" + boys.get(i) + "\", ";
+        ArrayList<String> matches = new ArrayList<>();
+        int i = 0;
+        while (i < girls.size() && i < boys.size()) {
+            matches.add(girls.get(i));
+            matches.add(boys.get(i));
+            i++;
         }
-        matches += "\"" + girls.get(girls.size() - 1) + "\", ";
-        matches += "\"" + boys.get(boys.size() - 1) + "\"";
-        return matches;
+        while (i < girls.size()) {
+            matches.add(girls.get(i));
+            i++;
+        }
+        while (i < boys.size()) {
+            matches.add(boys.get(i));
+            i++;
+        }
+        return String.join(", ", matches);
     }
 }
