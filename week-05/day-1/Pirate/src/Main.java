@@ -1,18 +1,16 @@
 public class Main {
     public static void main(String[] args) {
-        Pirate pirate = new Pirate();
+        Pirate pirate = new Pirate("Gerold", 4);
 
-        pirate.drinkSomeRum();
-        System.out.println(pirate.getRumLevel());
-        pirate.howsItGoingMate();
+        Pirate pirate2 = new Pirate("Bob", 6);
+        pirate.brawl(pirate2);
 
-        pirate.setRumLevel(7);
-        System.out.println(pirate.getRumLevel());
-        pirate.howsItGoingMate();
+        Ship ship = new Ship();
+        ship.fillShip();
+        ship.printShip();
 
-        pirate.die();
-        System.out.println(pirate.getRumLevel());
-        pirate.howsItGoingMate();
-        System.out.println(pirate.getRumLevel());
+        Ship ship2 = new Ship();
+        ship2.fillShip();
+        System.out.println(ship.battle(ship2));
     }
 }
