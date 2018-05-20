@@ -1,26 +1,40 @@
 import java.util.ArrayList;
 
 public class Ship {
+    private Pirate captain;
     private ArrayList<Pirate> pirates;
 
     public Ship() {
+        this.captain = new Pirate();
         this.pirates = new ArrayList<>();
     }
 
+    public Pirate getCaptain() {
+        return captain;
+    }
+
+    public void setCaptain(Pirate captain) {
+        this.captain = captain;
+    }
+
+    public ArrayList<Pirate> getPirates() {
+        return new ArrayList<>(pirates);
+    }
+
     public void fillShip() {
-        Pirate captain = new Pirate();
-        pirates.add(captain);
+        Pirate pirate = new Pirate();
+        setCaptain(pirate);
         int numberOfPirates = (int)(Math.random() * 10 + 1);
         for (int i = 0; i < numberOfPirates; i++) {
-            Pirate pirate = new Pirate();
-            pirates.add(pirate);
+            pirate = new Pirate();
+            getPirates().add(pirate);
         }
     }
 
     public int numberOfAlivePirates() {
         int counter = 0;
-        for (Pirate pirate : pirates) {
-            if (pirate.getIsAlive()) {
+        for (Pirate currentPirate : getPirates()) {
+            if (currentPirate.getIsAlive()) {
                 counter++;
             }
         }
@@ -28,26 +42,26 @@ public class Ship {
     }
 
     public void printShip() {
-        pirates.get(0).printPirate();
+        getCaptain().printPirate();
         System.out.println("He's the captain.");
         System.out.println(numberOfAlivePirates() + " alive pirates in the crew.");
     }
 
     private void battleRandomLosses() {
-        for (int i = 1; i < (int)(Math.random() * pirates.size() + 1); i++) {
-            pirates.get(i).die();
+        for (int i = 1; i < (int)(Math.random() * getPirates().size() + 1); i++) {
+            getPirates().get(i).die();
         }
     }
 
     private void battleRandomRum() {
-        for (Pirate pirate : pirates) {
-            pirate.drinkSomeRum((int)(Math.random() * 10 + 1));
+        for (Pirate currentPirate : getPirates()) {
+            currentPirate.drinkSomeRum((int)(Math.random() * 10 + 1));
         }
     }
 
     public boolean battle(Ship otherShip) {
-        boolean thisWins = (numberOfAlivePirates() - pirates.get(0).getRumLevel()) >
-                (otherShip.numberOfAlivePirates() - otherShip.pirates.get(0).getRumLevel());
+        boolean thisWins = (numberOfAlivePirates() - getCaptain().getRumLevel()) >
+                (otherShip.numberOfAlivePirates() - otherShip.getCaptain().getRumLevel());
         if (thisWins) {
             System.out.println("Your ship won!");
             otherShip.battleRandomLosses();
@@ -59,12 +73,4 @@ public class Ship {
         }
         return thisWins;
     }
-    /*
-    Ships should have a method to battle other ships: ship.battle(otherShip)
-    should return true if the actual ship (this) wins
-    the ship should win if its calculated score is higher
-    calculate score: Number of Alive pirates in the crew - Number of consumed rum by the captain
-    The loser crew has a random number of losses (deaths).
-    The winner captain and crew has a party, including a random number of rum :)
-    */
 }

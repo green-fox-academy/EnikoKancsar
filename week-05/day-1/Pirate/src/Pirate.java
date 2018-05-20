@@ -11,13 +11,6 @@ public class Pirate {
         parrot = new Parrot();
     }
 
-    public Pirate(String name) {
-        this.name = name;
-        isAlive = true;
-        rumLevel = 0;
-        parrot = new Parrot();
-    }
-
     public Pirate(String name, int rumLevel) {
         this.name = name;
         isAlive = true;
@@ -25,24 +18,16 @@ public class Pirate {
         parrot = new Parrot();
     }
 
-    public void printPirate() {
-        System.out.println(name + " is " + (isAlive ? " alive. " : " dead. ") + "He drank " + rumLevel + " rum.");
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public boolean getIsAlive() {
+        return isAlive;
     }
 
     public int getRumLevel() {
         return rumLevel;
     }
 
-    public boolean getIsAlive() {
-        return isAlive;
+    public void printPirate() {
+        System.out.println(name + " is " + (isAlive ? " alive. " : " dead. ") + "He drank " + rumLevel + " rum.");
     }
 
     public void printIsAlive() {
@@ -50,14 +35,6 @@ public class Pirate {
             System.out.println(this.name + " is alive.");
         } else {
             System.out.println(this.name + " is dead.");
-        }
-    }
-
-    public void drinkSomeRum() {
-        if (isAlive == true) {
-            rumLevel++;
-        } else {
-            System.out.println("He's dead.");
         }
     }
 
@@ -96,5 +73,9 @@ public class Pirate {
         }
         this.printIsAlive();
         anotherPirate.printIsAlive();
+    }
+
+    public static void main(String[] args) {
+
     }
 }

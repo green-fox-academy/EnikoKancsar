@@ -1,4 +1,4 @@
-public class Main {
+public class BattleApp {
     public static void main(String[] args) {
         Pirate pirate = new Pirate("Gerold", 4);
 
@@ -9,8 +9,14 @@ public class Main {
         ship.fillShip();
         ship.printShip();
 
+        System.out.println("--------------------------");
+
         Ship ship2 = new Ship();
         ship2.fillShip();
-        System.out.println(ship.battle(ship2));
+        ship2.printShip();
+
+        System.out.println("--------------------------");
+
+        ship.battle(ship2);
     }
 }
