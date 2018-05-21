@@ -18,7 +18,9 @@ public class Aircraft {
     }
 
     public int refill(int amountOfRefilling) {
-         if (amountOfRefilling <= maxAmmo - currentAmmo) {
+         if (amountOfRefilling <= 0) {
+             amountOfRefilling = 0;
+         } else if (amountOfRefilling <= maxAmmo - currentAmmo) {
              currentAmmo += amountOfRefilling;
              amountOfRefilling = 0;
          } else {
