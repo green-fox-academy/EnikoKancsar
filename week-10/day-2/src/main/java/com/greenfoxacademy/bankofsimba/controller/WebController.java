@@ -25,4 +25,10 @@ public class WebController {
         thymeLeafModel.addAttribute("bankAccounts", bankService.getAllAccount());
         return "bankaccounts";
     }
+
+    @GetMapping("HTMLception")
+    public String getHTML(Model thymeLeafModel) {
+        thymeLeafModel.addAttribute("htmlText", "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
+        return "htmlception";
+    }
 }
