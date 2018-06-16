@@ -19,11 +19,25 @@ public class WebController {
     }
 
     @GetMapping("show")
-    public String getAllAccount(Model thymeLeafModel) {
+    public String getSimba(Model thymeLeafModel) {
         BankAccount simba = new BankAccount("Simba", 2000.00, "lion");
         bankService.add(simba);
         thymeLeafModel.addAttribute("bankAccounts", bankService.getAllAccount());
-        return "bankaccounts";
+        return "accountSimba";
+    }
+
+    @GetMapping("showAll")
+    public String getAllAccount(Model thymeLeafModel) {
+        BankAccount simba = new BankAccount("Simba", 2000.00, "lion");
+        bankService.add(simba);
+        BankAccount nala = new BankAccount("Nala", 2000.00, "lion");
+        bankService.add(nala);
+        BankAccount zazu = new BankAccount("Zazu", 2000.00, "red-bild hornbill");
+        bankService.add(zazu);
+        BankAccount rafiki = new BankAccount("Rafiki", 2000.00, "mandrill");
+        bankService.add(rafiki);
+        thymeLeafModel.addAttribute("bankAccounts", bankService.getAllAccount());
+        return "allAccounts";
     }
 
     @GetMapping("HTMLception")
