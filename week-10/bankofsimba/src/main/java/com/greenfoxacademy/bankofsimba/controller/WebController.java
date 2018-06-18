@@ -20,7 +20,7 @@ public class WebController {
 
     @GetMapping("show")
     public String getSimba(Model thymeLeafModel) {
-        BankAccount simba = new BankAccount("Simba", 2000.00, "lion");
+        BankAccount simba = new BankAccount("Simba", 2000.00, "lion", true);
         bankService.add(simba);
         thymeLeafModel.addAttribute("bankAccounts", bankService.getAllAccount());
         return "accountSimba";
@@ -28,13 +28,13 @@ public class WebController {
 
     @GetMapping("showAll")
     public String getAllAccount(Model thymeLeafModel) {
-        BankAccount simba = new BankAccount("Simba", 2000.00, "lion");
+        BankAccount simba = new BankAccount("Simba", 2000.00, "lion", true);
         bankService.add(simba);
-        BankAccount nala = new BankAccount("Nala", 2000.00, "lion");
+        BankAccount nala = new BankAccount("Nala", 2000.00, "lion", false);
         bankService.add(nala);
-        BankAccount zazu = new BankAccount("Zazu", 2000.00, "red-bild hornbill");
+        BankAccount zazu = new BankAccount("Zazu", 2000.00, "red-bild hornbill", false);
         bankService.add(zazu);
-        BankAccount rafiki = new BankAccount("Rafiki", 2000.00, "mandrill");
+        BankAccount rafiki = new BankAccount("Rafiki", 2000.00, "mandrill", false);
         bankService.add(rafiki);
         thymeLeafModel.addAttribute("bankAccounts", bankService.getAllAccount());
         return "allAccounts";
