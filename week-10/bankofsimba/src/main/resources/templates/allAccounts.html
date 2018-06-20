@@ -12,6 +12,8 @@
         <th>BALANCE</th>
         <th>TYPE</th>
         <th>ID</th>
+        <th>KINGNESS</th>
+        <th>MORAL ORIENTATION</th>
     </tr>
     </thead>
     <tbody>
@@ -20,6 +22,18 @@
         <td th:text="${#numbers.formatDecimal(currentAccount.balance, 0, 2)} + ' Zebra'"></td>
         <td th:text="${currentAccount.animalType}"></td>
         <td th:text="${currentAccountStat.count}"></td>
+        <td th:if="${currentAccount.isKing()}">
+            <p>King!</p>
+        </td>
+        <td th:unless="${currentAccount.isKing()}">
+            <p>Not a king</p>
+        </td>
+        <td th:if="${currentAccount.isGood()}">
+            <p>Good guy</p>
+        </td>
+        <td th:unless="${currentAccount.isGood()}">
+            <p>Bad guy</p>
+        </td>
     </tr>
     </tbody>
 </table>

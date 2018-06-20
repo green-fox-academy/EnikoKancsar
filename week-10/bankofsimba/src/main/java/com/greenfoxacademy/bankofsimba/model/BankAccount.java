@@ -5,12 +5,14 @@ public class BankAccount {
     private Double balance;
     private String animalType;
     private boolean isKing;
+    private boolean isGood;
 
-    public BankAccount(String name, Double balance, String animalType, boolean isKing) {
+    public BankAccount(String name, Double balance, String animalType, boolean isKing, boolean isGood) {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
         this.isKing = isKing;
+        this.isGood = isGood;
     }
 
     public BankAccount() {
@@ -48,6 +50,14 @@ public class BankAccount {
         isKing = king;
     }
 
+    public boolean isGood() {
+        return isGood;
+    }
+
+    public void setGood(boolean good) {
+        isGood = good;
+    }
+
     @Override
     public String toString() {
         return "BankAccount{" +
@@ -55,6 +65,7 @@ public class BankAccount {
                 ", balance=" + balance +
                 ", animalType='" + animalType + '\'' +
                 ", isKing='" + isKing + '\'' +
+                ", isGood='" + isGood + '\'' +
                 '}';
     }
 }

@@ -12,6 +12,8 @@
         <th>BALANCE</th>
         <th>TYPE</th>
         <th>ID</th>
+        <th>KINGNESS</th>
+        <th>MORAL ORIENTATION</th>
     </tr>
     </thead>
     <tbody>
@@ -20,6 +22,18 @@
         <td th:text="${#numbers.formatDecimal(bankAccounts.get(0).balance, 0, 2)} + ' Zebra'"></td>
         <td th:text="${bankAccounts.get(0).animalType}"></td>
         <td th:text="'0'"></td>
+        <td th:if="${bankAccounts.get(0).isKing()}">
+            <p>King!</p>
+        </td>
+        <td th:unless="${bankAccounts.get(0).isKing()}">
+            <p>Not a king</p>
+        </td>
+        <td th:if="${bankAccounts.get(0).isGood()}">
+            <p>Good guy</p>
+        </td>
+        <td th:unless="${bankAccounts.get(0).isGood()}">
+            <p>Bad guy</p>
+        </td>
         </t>
     </tbody>
 </table>
