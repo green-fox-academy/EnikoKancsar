@@ -9,13 +9,13 @@
     <p>Name: <input type="text" th:field="*{name}" ></p>
     <p>Balance: <input type="text" th:field="*{balance}" ></p>
     <p>Animal Type: <input type="text" th:field="*{animalType}" ></p>
-    <p>Kingness:
-        <input type="radio" th:field="*{kingness}" value="true">
-        <input type="radio" th:field="*{kingness}" value="false">
+    <p>King?: <br>
+        <input type="radio" th:field="*{kingness}" value="true"> Yes!<br>
+        <input type="radio" th:field="*{kingness}" value="false"> Nope.<br>
     </p>
-    <p>Morality:
-        <input type="radio" th:field="*{morality}" value="true">
-        <input type="radio" th:field="*{morality}" value="false">
+    <p>Morality: <br>
+        <input type="radio" th:field="*{morality}" value="true"> All good and innocent.<br>
+        <input type="radio" th:field="*{morality}" value="false"> Anarchy and chaos.<br>
     </p>
 
     <p><input type="submit" value="Submit" ></p>
@@ -27,7 +27,7 @@
         <th>BALANCE</th>
         <th>TYPE</th>
         <th>ID</th>
-        <th>KINGNESS</th>
+        <th>KING?</th>
         <th>MORAL ORIENTATION</th>
     </tr>
     </thead>
@@ -41,7 +41,7 @@
             <p>King!</p>
         </td>
         <td th:unless="${currentAccount.isKingness()}">
-            <p>Not a kingness</p>
+            <p>Not a king</p>
         </td>
         <td th:if="${currentAccount.isMorality()}">
             <p>Good guy</p>
