@@ -5,6 +5,21 @@
     <meta charset="utf-8"/>
 </head>
 <body>
+<form action="#" th:object="${newBankAccount}" method="post">
+    <p>Name: <input type="text" th:field="*{name}" ></p>
+    <p>Balance: <input type="text" th:field="*{balance}" ></p>
+    <p>Animal Type: <input type="text" th:field="*{animalType}" ></p>
+    <p>Kingness:
+        <input type="radio" th:field="*{kingness}" value="true">
+        <input type="radio" th:field="*{kingness}" value="false">
+    </p>
+    <p>Morality:
+        <input type="radio" th:field="*{morality}" value="true">
+        <input type="radio" th:field="*{morality}" value="false">
+    </p>
+
+    <p><input type="submit" value="Submit" ></p>
+</form>
 <table style="width:30%; height:30px; font-size: large">
     <thead>
     <tr style="background-color:pink">
@@ -22,16 +37,16 @@
         <td th:text="${#numbers.formatDecimal(currentAccount.balance, 0, 2)} + ' Zebra'"></td>
         <td th:text="${currentAccount.animalType}"></td>
         <td th:text="${currentAccountStat.count}"></td>
-        <td th:if="${currentAccount.isKing()}">
+        <td th:if="${currentAccount.isKingness()}">
             <p>King!</p>
         </td>
-        <td th:unless="${currentAccount.isKing()}">
-            <p>Not a king</p>
+        <td th:unless="${currentAccount.isKingness()}">
+            <p>Not a kingness</p>
         </td>
-        <td th:if="${currentAccount.isGood()}">
+        <td th:if="${currentAccount.isMorality()}">
             <p>Good guy</p>
         </td>
-        <td th:unless="${currentAccount.isGood()}">
+        <td th:unless="${currentAccount.isMorality()}">
             <p>Bad guy</p>
         </td>
     </tr>

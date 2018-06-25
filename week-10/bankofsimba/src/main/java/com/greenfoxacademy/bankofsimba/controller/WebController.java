@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class WebController {
@@ -18,28 +20,17 @@ public class WebController {
         this.bankService = bankService;
     }
 
-    @GetMapping("show")
-    public String getSimba(Model thymeLeafModel) {
-        BankAccount simba = new BankAccount("Simba", 2000.00, "lion", true, true);
-        bankService.add(simba);
-        thymeLeafModel.addAttribute("bankAccounts", bankService.getAllAccount());
-        return "accountSimba";
+    @GetMapping("showAll")
+    public String getAllAccount(Model model) {
+        model.addAttribute("newBankAccount", new BankAccount());
+        model.addAttribute("bankAccounts", bankService.getAllAccount());
+        return "allAccounts";
     }
 
-    @GetMapping("showAll")
-    public String getAllAccount(Model thymeLeafModel) {
-        BankAccount simba = new BankAccount("Simba", 2000.00, "lion", true, true);
-        bankService.add(simba);
-        BankAccount nala = new BankAccount("Nala", 2000.00, "lion", false, true);
-        bankService.add(nala);
-        BankAccount zazu = new BankAccount("Zazu", 2000.00, "red-bild hornbill", false, true);
-        bankService.add(zazu);
-        BankAccount rafiki = new BankAccount("Rafiki", 2000.00, "mandrill", false, true);
-        bankService.add(rafiki);
-        BankAccount me = new BankAccount("Me", 2000.00, "human", true, false);
-        bankService.add(me);
-        thymeLeafModel.addAttribute("bankAccounts", bankService.getAllAccount());
-        return "allAccounts";
+    @PostMapping("showAll")
+    public String postAllAccount(@ModelAttribute BankAccount newBankAccount) {
+        bankService.add(newBankAccount);
+        return "redirect:/showAll";
     }
 
     @GetMapping("HTMLception")
