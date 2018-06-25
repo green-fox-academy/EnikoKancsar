@@ -31,4 +31,17 @@ public class BankAccountServiceImpl implements BankAccountService {
     public ArrayList<BankAccount> getAllAccount() {
         return bankAccounts;
     }
+
+    @Override
+    public void raiseBalance(BankAccount selectedAccount) {
+        for (BankAccount account : bankAccounts) {
+            if (account.getName().equals(selectedAccount.getName())) {
+                if (account.isKing()) {
+                    account.setBalance(100D);
+                } else {
+                    account.setBalance(10D);
+                }
+            }
+        }
+    }
 }

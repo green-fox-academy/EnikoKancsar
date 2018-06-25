@@ -4,14 +4,14 @@ public class BankAccount {
     private String name;
     private Double balance;
     private String animalType;
-    private boolean kingness;
+    private boolean isKing;
     private boolean morality;
 
-    public BankAccount(String name, Double balance, String animalType, boolean kingness, boolean morality) {
+    public BankAccount(String name, Double balance, String animalType, boolean isKing, boolean morality) {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
-        this.kingness = kingness;
+        this.isKing = isKing;
         this.morality = morality;
     }
 
@@ -42,12 +42,12 @@ public class BankAccount {
         this.animalType = animalType;
     }
 
-    public boolean isKingness() {
-        return kingness;
+    public boolean isKing() {
+        return isKing;
     }
 
-    public void setKingness(boolean kingness) {
-        this.kingness = kingness;
+    public void setKing(boolean king) {
+        this.isKing = king;
     }
 
     public boolean isMorality() {
@@ -64,7 +64,7 @@ public class BankAccount {
                 "name='" + name + '\'' +
                 ", balance=" + balance +
                 ", animalType='" + animalType + '\'' +
-                ", kingness='" + kingness + '\'' +
+                ", isKing='" + isKing + '\'' +
                 ", morality='" + morality + '\'' +
                 '}';
     }

@@ -24,12 +24,14 @@ public class WebController {
     public String getAllAccount(Model model) {
         model.addAttribute("newBankAccount", new BankAccount());
         model.addAttribute("bankAccounts", bankService.getAllAccount());
+        model.addAttribute("selectedAccount", new BankAccount());
         return "allAccounts";
     }
 
     @PostMapping("showAll")
-    public String postAllAccount(@ModelAttribute BankAccount newBankAccount) {
+    public String postAllAccount(@ModelAttribute BankAccount newBankAccount, @ModelAttribute BankAccount selectedAccount) {
         bankService.add(newBankAccount);
+        bankService.raiseBalance(selectedAccount);
         return "redirect:/showAll";
     }
 

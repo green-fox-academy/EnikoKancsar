@@ -8,4 +8,6 @@ public interface BankAccountService {
     void add(BankAccount bankAccount);
 
     ArrayList<BankAccount> getAllAccount();
+
+    void raiseBalance(BankAccount selectedAccount);
 }

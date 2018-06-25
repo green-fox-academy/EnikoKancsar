@@ -5,13 +5,14 @@
     <meta charset="utf-8"/>
 </head>
 <body>
+<p>Add a new account here: </p>
 <form action="#" th:object="${newBankAccount}" method="post">
     <p>Name: <input type="text" th:field="*{name}" ></p>
     <p>Balance: <input type="text" th:field="*{balance}" ></p>
     <p>Animal Type: <input type="text" th:field="*{animalType}" ></p>
     <p>King?: <br>
-        <input type="radio" th:field="*{kingness}" value="true"> Yes!<br>
-        <input type="radio" th:field="*{kingness}" value="false"> Nope.<br>
+        <input type="radio" th:field="*{king}" value="true"> Yes!<br>
+        <input type="radio" th:field="*{king}" value="false"> Nope.<br>
     </p>
     <p>Morality: <br>
         <input type="radio" th:field="*{morality}" value="true"> All good and innocent.<br>
@@ -20,6 +21,19 @@
 
     <p><input type="submit" value="Submit" ></p>
 </form>
+
+<p>Raise balance here: </p>
+<form action='#' th:object="${selectedAccount}" method='POST'>
+    <p>Select name: </p>
+                <select th:field="*{name}">
+                    <option value=""> -- </option>
+                    <option th:each="account : ${bankAccounts}"
+                            th:value="${account.name}"
+                            th:utext="${account.name}"/>
+                </select>
+    <input type="submit" value="Submit" />
+</form>
+
 <table style="width:30%; height:30px; font-size: large">
     <thead>
     <tr style="background-color:pink">
@@ -37,10 +51,10 @@
         <td th:text="${#numbers.formatDecimal(currentAccount.balance, 0, 2)} + ' Zebra'"></td>
         <td th:text="${currentAccount.animalType}"></td>
         <td th:text="${currentAccountStat.count}"></td>
-        <td th:if="${currentAccount.isKingness()}">
+        <td th:if="${currentAccount.isKing()}">
             <p>King!</p>
         </td>
-        <td th:unless="${currentAccount.isKingness()}">
+        <td th:unless="${currentAccount.isKing()}">
             <p>Not a king</p>
         </td>
         <td th:if="${currentAccount.isMorality()}">
@@ -52,5 +66,6 @@
     </tr>
     </tbody>
 </table>
+
 </body>
 </html>
