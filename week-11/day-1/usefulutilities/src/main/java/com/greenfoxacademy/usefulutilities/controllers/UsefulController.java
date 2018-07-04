@@ -41,4 +41,10 @@ public class UsefulController {
         model.addAttribute("invalidEmail", emailAddress + " is not a valid email address");
         return "emailValidator";
     }
+
+    @GetMapping("useful/encoding")
+    public String encode(@RequestParam String text, @RequestParam int number, Model model) {
+        model.addAttribute("encodedText", utilityService.caesar(text, number));
+        return "encodedTextPage";
+    }
 }
