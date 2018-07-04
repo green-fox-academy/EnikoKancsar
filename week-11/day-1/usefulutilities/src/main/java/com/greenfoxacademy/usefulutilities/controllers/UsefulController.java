@@ -34,7 +34,7 @@ public class UsefulController {
         return "randomColorPage";
     }
 
-    @RequestMapping("useful/emailValidator")
+    @GetMapping("useful/emailValidator")
     public String emailCheck(@RequestParam String emailAddress, Model model) {
         model.addAttribute("isValid", utilityService.validateEmail(emailAddress));
         model.addAttribute("validEmail", emailAddress + " is a valid email address");
