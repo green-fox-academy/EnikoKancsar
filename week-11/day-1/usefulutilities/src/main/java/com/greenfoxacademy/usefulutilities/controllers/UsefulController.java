@@ -47,4 +47,10 @@ public class UsefulController {
         model.addAttribute("encodedText", utilityService.caesar(text, number));
         return "encodedTextPage";
     }
+
+    @GetMapping("useful/decoding")
+    public String decode(@RequestParam String text, @RequestParam int number, Model model) {
+        model.addAttribute("decodedText", utilityService.caesar(text, -number));
+        return "decodedTextPage";
+    }
 }
