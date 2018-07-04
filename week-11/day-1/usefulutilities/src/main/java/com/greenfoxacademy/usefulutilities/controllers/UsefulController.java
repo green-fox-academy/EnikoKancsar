@@ -7,8 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Random;
-
 @Controller
 public class UsefulController {
 
@@ -25,11 +23,7 @@ public class UsefulController {
 
     @GetMapping("useful/colored")
     public String randomColoredPage(Model model) {
-        Random rand = new Random();
-        int r = rand.nextInt(256);
-        int g = rand.nextInt(256);
-        int b = rand.nextInt(256);
-        model.addAttribute("randomColor", "rgb(" + r + ", " + g + ", " + b + ")");
+        model.addAttribute("randomColor", utilityService.getRandomColor());
         return "randomColorPage";
     }
 
