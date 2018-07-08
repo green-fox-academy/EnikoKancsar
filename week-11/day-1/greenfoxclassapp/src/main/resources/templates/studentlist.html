@@ -5,8 +5,10 @@
     <title>Greenfox Class Student List</title>
 </head>
 <body>
-<ul th:each="item : ${students}">
-    <li  th:text="${item}">Item description here...</li>
+<a href="http://localhost:8080/gfa/add">Add a new student</a><br>
+<p>List of the students: </p>
+<ul th:each="currentStudent : ${students}">
+    <li th:text="${currentStudent}"></li>
 </ul>
 </body>
 </html>
