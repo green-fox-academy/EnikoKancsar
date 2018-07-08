@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Greenfox Class</title>
 </head>
 <body style="background-color:powderblue;">
-<a href="http://localhost:8080/gfa/list">List of students</a><br>
-<a href="http://localhost:8080/gfa/add">Add a new student</a><br>
+    <header>
+        <p>Student Count: </p>
+        <p th:text="${studentCount}"></p>
+    </header>
+    <a href="http://localhost:8080/gfa/list">List of students</a><br>
+    <a href="http://localhost:8080/gfa/add">Add a new student</a><br>
 </body>
 </html>
