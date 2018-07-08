@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Greenfox Class Checking a student</title>
+</head>
+<body>
+<p th:if="${isInTheList}" th:text="'The student is in the list.'"></p>
+<p th:unless="${isInTheList}" th:text="'The student is not in the list.'"></p>
+<br>
+<p>Check student:</p>
+<form action="/gfa/check" method="post">
+    <p>Name: <input type="text" name="studentName"></p>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

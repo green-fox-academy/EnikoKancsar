@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>Greenfox Class Adding New Student</title>
 </head>
 <body>
 <p>Add a new student here:</p>
-<form action="/gfa/save" th:method="get">
+<form action="/gfa/save" method="get">
     <p>Name: <input type="text" name="studentName"></p>
     <input type="submit" value="Submit">
 </form>

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -41,4 +42,14 @@ public class WebController {
         return "redirect:list";
     }
 
+    @GetMapping("gfa/check")
+    public String getCheckStudent() {
+        return "checkstudent";
+    }
+
+    @PostMapping("gfa/check")
+    public String postCheckStudent(@RequestParam String studentName, Model model) {
+        model.addAttribute("isInTheList", studentService.isInTheList(studentName));
+        return "checkstudent";
+    }
 }
