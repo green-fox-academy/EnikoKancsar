@@ -10,9 +10,10 @@ public class Todo {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+
     private String title;
-    private boolean urgent; //default false
-    private boolean done; // default false
+    private boolean urgent;
+    private boolean done;
 
     public Todo() {
         urgent = false;

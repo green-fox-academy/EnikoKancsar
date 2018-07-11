@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Todos for today:</h1>
-<table border="1">
+<table border="2">
     <thead>
     <tr>
         <th>ID</th>
@@ -16,10 +16,10 @@
     </thead>
     <tbody>
     <tr th:each="currentTodo : ${todos}">
-        <td th:text="${currentTodo.getId()}"></td>
-        <td th:text="${currentTodo.getTitle()}"></td>
-        <td th:text="${currentTodo.isDone()}"></td>
-        <td th:text="${currentTodo.isUrgent()}"></td>
+        <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}" th:text="${currentTodo.getId()}"></td>
+        <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}" th:text="${currentTodo.getTitle()}"></td>
+        <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}" th:text="${currentTodo.isDone()}"></td>
+        <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}" th:text="${currentTodo.isUrgent()}"></td>
     </tr>
     </tbody>
 </table>
