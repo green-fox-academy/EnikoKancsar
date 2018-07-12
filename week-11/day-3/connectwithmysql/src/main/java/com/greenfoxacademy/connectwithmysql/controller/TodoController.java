@@ -38,4 +38,17 @@ public class TodoController {
         todoRepository.deleteById(id);
         return "redirect:http://localhost:8080/list";
     }
+
+    @GetMapping("list/{id}/edit")
+    public String getEditTodo(@PathVariable @ModelAttribute Long id, Model model) {
+        model.addAttribute("selectedTodo", todoRepository.findById(id));
+        return "edittodo";
+    }
+
+    @PostMapping("list/{id}/edit")
+    public String postEditTodo(@PathVariable Long id, @ModelAttribute Todo selectedTodo) {
+        selectedTodo.setId(id);
+        todoRepository.save(selectedTodo);
+        return "redirect:http://localhost:8080/list";
+    }
 }
