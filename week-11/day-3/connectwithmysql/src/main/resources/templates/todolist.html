@@ -22,6 +22,7 @@
         <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}" th:text="${currentTodo.getTitle()}"></td>
         <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}" th:text="${currentTodo.isDone()}"></td>
         <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}" th:text="${currentTodo.isUrgent()}"></td>
+        <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}"><a  th:href="@{'http://localhost:8080/list/' + ${currentTodo.getId()} + '/delete'}">delete</a></td>
     </tr>
     </tbody>
 </table>
