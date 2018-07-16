@@ -30,4 +30,16 @@ public class FoxController {
         foxService.findFoxByName(name).setDrink(newDrink);
         return "redirect:http://localhost:8080/?name=" + name;
     }
+
+    @GetMapping("trickCenter")
+    public String getTrickCenter(@RequestParam String name, Model model) {
+        model.addAttribute("fox", foxService.findFoxByName(name));
+        return "trickcenter";
+    }
+
+    @PostMapping("trickCenter")
+    public String postTrickCenter(@RequestParam String name, @RequestParam String newTrick) {
+        foxService.findFoxByName(name).addTrick(newTrick);
+        return "redirect:http://localhost:8080/?name=" + name;
+    }
 }

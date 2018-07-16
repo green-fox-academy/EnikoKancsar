@@ -1,10 +1,10 @@
 package com.greenfoxacademy.programmerfoxclub.models;
 
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
 
 public class Fox {
     private String name;
-    private ArrayList<String> tricks;
+    private LinkedHashSet<String> tricks;
     private String food;
     private String drink;
 
@@ -13,12 +13,12 @@ public class Fox {
 
     public Fox(String name) {
         this.name = name;
-        tricks = new ArrayList<>();
+        tricks = new LinkedHashSet<>();
         food = "pizza";
         drink = "lemonade";
     }
 
-    public Fox(String name, ArrayList<String> tricks, String food, String drink) {
+    public Fox(String name, LinkedHashSet<String> tricks, String food, String drink) {
         this.name = name;
         this.tricks = tricks;
         this.food = food;
@@ -33,12 +33,16 @@ public class Fox {
         this.name = name;
     }
 
-    public ArrayList<String> getTricks() {
+    public LinkedHashSet<String> getTricks() {
         return tricks;
     }
 
-    public void setTricks(ArrayList<String> tricks) {
+    public void setTricks(LinkedHashSet<String> tricks) {
         this.tricks = tricks;
+    }
+
+    public void addTrick(String newTrick) {
+        tricks.add(newTrick);
     }
 
     public String getFood() {

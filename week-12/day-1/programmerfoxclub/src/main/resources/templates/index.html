@@ -8,6 +8,7 @@
 <ul>
     <li><a href="#">Information</a></li>
     <li><a th:href="|/nutritionStore?name=${fox.getName()}|">Nutrition Store</a></li>
+    <li><a th:href="|/trickCenter?name=${fox.getName()}|">Trick Center</a></li>
 </ul>
 <img src="greenfox.png">
 <p>This is <span th:text="${fox.getName()}"></span> currently living on <span th:text="${fox.getFood()}"></span> and <span th:text="${fox.getDrink()}"></span>.
@@ -16,6 +17,7 @@
 <h2>Known tricks</h2>
 <p th:if="${fox.getTricks().isEmpty()}">You know no tricks, yet. Go and learn some.</p>
 <ul th:unless="${fox.getTricks().isEmpty()}" th:each="trick : ${fox.getTricks()}">
+    <li th:text="${trick}"></li>
 </ul>
 </body>
 </html>

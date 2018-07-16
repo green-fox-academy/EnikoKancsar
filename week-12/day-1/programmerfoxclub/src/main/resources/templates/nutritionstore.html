@@ -6,8 +6,9 @@
 </head>
 <body>
 <ul>
-    <li><a href="#">Information</a></li>
-    <li><a th:href="|/nutritionStore?name=${fox.getName()}|">Nutrition Store</a></li>
+    <li><a th:href="|/?name=${fox.getName()}|">Information</a></li>
+    <li><a href="#">Nutrition Store</a></li>
+    <li><a th:href="|/trickCenter?name=${fox.getName()}|">Trick Center</a></li>
 </ul>
 <form th:object="${fox}" method="post">
 <p>Food</p>
@@ -22,10 +23,10 @@
 
 <p>Drink</p>
 <select name="newDrink">
-    <option value="lemonade">lemonade</option>
+    <option value="water">water</option>
     <option value="fruit smoothie">fruit smoothie</option>
     <option value="oreo shake">oreo shake</option>
-    <option value="water">water</option>
+    <option value="lemonade">lemonade</option>
 </select>
 
     <input type="submit" value="Change">
