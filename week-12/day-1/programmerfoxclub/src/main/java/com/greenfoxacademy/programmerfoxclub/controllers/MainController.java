@@ -1,7 +1,7 @@
 package com.greenfoxacademy.programmerfoxclub.controllers;
 
 import com.greenfoxacademy.programmerfoxclub.models.Fox;
-import com.greenfoxacademy.programmerfoxclub.services.FoxService;
+import com.greenfoxacademy.programmerfoxclub.services.FoxServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,13 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
 
-    private FoxService foxService;
+    private FoxServiceImpl foxService;
 
     @Autowired
-    public MainController() {
-        foxService = new FoxService();
+    public MainController(FoxServiceImpl foxService) {
+        this.foxService = foxService;
     }
-
     @RequestMapping("")
     public String mainPage(@RequestParam String name, Model model) {
         model.addAttribute("fox", foxService.findFoxByName(name));
@@ -37,19 +36,6 @@ public class MainController {
         if(!foxService.getAllFoxes().containsKey(name)) {
             foxService.addNewFox(name);
         }
-        return "redirect:http://localhost:8080/?name=" + name;
-    }
-
-    @GetMapping("nutritionStore")
-    public String getNutritionStore(@RequestParam String name, Model model) {
-        model.addAttribute("fox", foxService.findFoxByName(name));
-        return "nutritionstore";
-    }
-
-    @PostMapping("nutritionStore")
-    public String postNutritionStore(@RequestParam String name, @RequestParam String newFood, @RequestParam String newDrink) {
-        foxService.findFoxByName(name).setFood(newFood);
-        foxService.findFoxByName(name).setDrink(newDrink);
         return "redirect:http://localhost:8080/?name=" + name;
     }
 }
