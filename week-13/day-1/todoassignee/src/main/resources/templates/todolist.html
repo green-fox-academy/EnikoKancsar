@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Todo CRUD App</title>
+</head>
+<body>
+<a href="http://localhost:8080/list/add">Add new Todo</a>
+<h2>Search for a todo:</h2>
+<form action="/list/" th:object="${searchedTodo}" method="post">
+    <input type="text" name="searchedTodo" th:field="*{title}"><br>
+    <input type="submit" value="Search">
+</form>
+<h1>Todos for today:</h1>
+<table border="2">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>ACTION</th>
+        <th>DONE</th>
+        <th>URGENT</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="currentTodo : ${todos}">
+        <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}" th:text="${currentTodo.getId()}"></td>
+        <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}" th:text="${currentTodo.getTitle()}"></td>
+        <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}" th:text="${currentTodo.isDone()}"></td>
+        <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}" th:text="${currentTodo.isUrgent()}"></td>
+        <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}"><a  th:href="@{'http://localhost:8080/list/' + ${currentTodo.getId()} + '/delete'}">delete</a></td>
+        <td th:if="${(currentTodo.isDone() != isActive) || (isActive == null)}"><a  th:href="@{'http://localhost:8080/list/' + ${currentTodo.getId()} + '/edit'}">edit</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
